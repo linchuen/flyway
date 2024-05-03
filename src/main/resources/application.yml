@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/flyway
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  flyway:
+    enabled: true               # 啟用 Flyway Migration
+    baseline-version: 1.0       # 基準版本
+    baseline-on-migrate: true   # 基準版本是否在 migrate 時執行
+    validate-on-migrate: true   # 執行 migrate 時會去驗證資料庫的版本與實際的 Migration 版本是否相同
+    out-of-order: false         # 是否允許執行順序不同的 Migration
+    target: latest              # 目標版本
+    locations: classpath:db/migration # Migration 檔案存放的資料夾
+    # 以下是資料庫的連線設定
+    url: jdbc:mysql://127.0.0.1:3306/flyway
+    user: root
+    password: root
+
+logging:
+  level:
+    flyway: debug
